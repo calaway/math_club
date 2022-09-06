@@ -1,9 +1,7 @@
 function bigIntSqrt(square) {
   function iteration(square, guess0) {
     const guess1 = (guess0 + (square / guess0)) / 2n
-    if (guess1 === guess0 || guess1 === (guess0 - 1n)) {
-      return guess1
-    }
+    if (guess1 === guess0 || guess1 === (guess0 - 1n)) return guess1
     return iteration(square, guess1)
   }
   return iteration(square, 1n)
