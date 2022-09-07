@@ -1,5 +1,6 @@
 import sys
 import time
+import random
 
 
 def timer(func):
@@ -61,25 +62,16 @@ def gcd(a, b):
 
 
 def is_prime_fermat(n):
-    if n == 2 or n == 3:
-        return True
-    if n < 3:
-        return False
-    if n % 2 == 0 or n % 3 == 0:
-        return False
     for i in range(10):
-        a = 2 + i
-        if successive_squaring(a, n - 1, n) != 1:
+        trial_witness = random.randint(2, n - 1)
+        # print(trial_witness)
+        if gcd(trial_witness, n) != 1:
+            return False
+        if successive_squaring(trial_witness, n - 1, n) != 1:
             return False
     return True
 
 
-print(successive_squaring(
-    int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3])
-))
+# Belphegor’s Prime: 1000000000000066600000000000001
+print(timer(is_prime_fermat)(1000000000000066600000000000001))
 # print(timer(successive_squaring)(7, 10**1_000_000, 853))
-# print(timer(successive_squaring)(
-#     7,
-#     1_000_000_000_000_066_600_000_000_000_001 - 1,
-#     1_000_000_000_000_066_600_000_000_000_001
-# ))
