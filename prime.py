@@ -26,8 +26,8 @@ def is_prime_trial_division(n):
     counter = 0
     for i in range(6, limit, 6):
         # if i > 10 ** counter:
-        # print("Checked through 10^", counter)
-        # counter += 1
+        #   print("Checked through 10^", counter)
+        #   counter += 1
         if n % (i - 1) == 0 or n % (i + 1) == 0:
             return False
     return True
@@ -72,6 +72,8 @@ def is_prime_fermat(n):
     return True
 
 
+# Jenny's Prime: 8675309
 # Belphegor’s Prime: 1000000000000066600000000000001
+print(timer(is_prime_trial_division)(8675309))
 print(timer(is_prime_fermat)(1000000000000066600000000000001))
 # print(timer(successive_squaring)(7, 10**1_000_000, 853))
